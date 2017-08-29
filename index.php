@@ -85,7 +85,7 @@
 						<input type="hidden" name="item_name" value="Lotto Ticket">
 						<input type="hidden" name="item_desc" value="1 XVG Lotto Ticket">
 						<input type="hidden" name="currency" value="XVG">
-						<input type="hidden" name="amountf" value="20.00000000">
+						<input type="hidden" name="amountf" value="500.00000000">
 						<input type="hidden" name="want_shipping" value="0">
 						<input type="hidden" name="success_url" value="https://dotnetrussell.com/xvglotto/tickets.php" >
 						<input type="image" src="https://www.coinpayments.net/images/pub/buynow-wide-yellow.png" alt="Buy Now with CoinPayments.net">
