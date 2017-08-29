@@ -69,7 +69,7 @@
 
 	//Status code of the payment
 	$statusCode = $result["result"]["status"];
-	
+
 	//If the code is 100 or more, then the payment is compelted
 	//If the code is 2 then it's completed and set for nightly withdraw
 	if($statusCode >= 100  || $statusCode == 2){
@@ -113,17 +113,18 @@
 	
 		//Find all lotto numbers that haven't been assigned
 		$query = "SELECT * FROM tickets WHERE PaymentAddress = ''";
-		if ($result = $mysqli->query($query)) {
 
-			//get the rows
-			$availableTickets = $result->fetch_all(MYSQLI_ASSOC);
+		$result = $mysqli->query($query);
+		$availableTickets = $result->fetch_all(MYSQLI_ASSOC);
 
+		//If we have rows, then we good
+		if (count($availableTickets)>0) {
 			//choose a random ticket
 			$ticketId = array_rand($availableTickets,1);
 
 			//extract the number from the ticket
 			$ticketNumber = $availableTickets[$ticketId]["ticketNumber"];
-	
+
 			//Sell the ticket
 			$query = "UPDATE tickets SET paymentAddress = '".$payoutAddress."' WHERE ticketNumber = '".$ticketNumber."'";
 			$mysqli->query($query);
@@ -135,6 +136,28 @@
 			echo $ticketNumber;
     			$result->close();
 		}
+		//else we need to make some new rows
+		else {
+			//add new ticket
+			$insert = "INSERT INTO tickets (paymentAddress) values('')";
+			$mysqli->query($insert);
+
+			$get = "SELECT * FROM tickets WHERE PaymentAddress = ''";
+			if($result = $mysqli->query($get)){
+				$availableTickets = $result->fetch_all(MYSQLI_ASSOC);
+				$ticketNumber = $availableTickets[0]["ticketNumber"];
+				$sell = "UPDATE tickets SET paymentAddress = '".$payoutAddress."' WHERE ticketNumber = '".$ticketNumber."'";
+				$mysqli->query($sell);
+				$update = "UPDATE potinfo SET ticketsSold = ticketsSold + 1 WHERE id = 1";
+				$mysqli->query($update);
+
+				echo $ticketNumber;
+				$result->close();
+
+			}
+		}
+
+
 	}
 	//Don't let the get a lotto ticket
 	else if($statusCode === 0){
