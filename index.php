@@ -179,7 +179,7 @@
 						$seedAmount = $currentStats["seedAmount"];
 						$ticketPrice = $currentStats["ticketPrice"];
 						$potAmount = (($ticketPrice*.69)*$totalSold)+$seedAmount;
-						$marketingAmount =(($ticketPrice*.2)*$totalSold)+$seedAmount;
+						$marketingAmount =(($ticketPrice*.2)*$totalSold);
 					
 						$rowOne=getRow("<b>Total tickets sold:</b>",$totalSold);
 						$rowTwo=getRow("<b>Win ratio:</b>",$ratio);
