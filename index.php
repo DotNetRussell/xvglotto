@@ -1,6 +1,9 @@
 <html>
 	<head>
-		
+		<link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">		
+		<script src="./bootstrap/assets/js/html5shiv.js"></script>
+		<script src="./bootstrap/assets/js/respond.min.js"></script>
+		<script src="./bootstrap/js/bootstrap.min.js"></script>
 		<script>
 			// Set the date we're counting down to
 			var countDownDate = new Date("SEP 10, 2017 17:00:00 GMT-4").getTime();
@@ -36,23 +39,40 @@
 	
 	</head>
 	
-	<body style="margin:100" bgcolor="e6f7ff">
-		<img src="https://vergecurrency.com/vergelogo.svg"/>
+	<body class="container theme-showcase">
+		<img margin="10" src="https://vergecurrency.com/vergelogo.svg"/>
 		</br>
 		</br>
 		<h1>Welcome to the (unofficial) XVG Lotto!</h1>
 		<h3>Hosted and operated by <a href="https://twitter.com/DotNetRussell">@DotNetRussell</a></h2>
 		</br>
 		
-		<table cellpadding="50" border="1">
+		<table class="table table-bordered">
 			<tr>
 				<th>
-					<h1>Buy a Ticket</h1>
-					<img src="https://d30y9cdsu7xlg0.cloudfront.net/png/936-200.png" width="80"/>
+					<table cellpadding="50" >
+						<tr>
+							<td>
+								<img src="https://d30y9cdsu7xlg0.cloudfront.net/png/936-200.png" width="80"/>
+							</td>
+
+							<td>
+								<h1>Buy a Ticket</h1>
+							</td>
+						</tr>
+					</table>
 				</th>
 				<th>
-					<h1>Redeem a Ticket</h1>
-					<img src="https://image.flaticon.com/icons/png/512/8/8817.png" width="50"/>
+					<table>
+						<tr>
+							<td>
+								<img src="https://image.flaticon.com/icons/png/512/8/8817.png" width="50"/>
+							</td>
+							<td>
+								<h1>Redeem a Ticket</h1>
+							</td>
+						</tr>
+					</table>
 				</th>
 			</tr>
 			<tr>
@@ -75,7 +95,7 @@
 					
 						</h3>
 					
-						</br></br>
+						
 						<input type="hidden" name="first_name" value="anonymous">
 						<input type="hidden" name="last_name" value="anonymous">
 						<input type="hidden" name="email" value="anonymous@anon.com">
@@ -88,8 +108,8 @@
 						<input type="hidden" name="amountf" value="500.00000000">
 						<input type="hidden" name="want_shipping" value="0">
 						<input type="hidden" name="success_url" value="https://dotnetrussell.com/xvglotto/tickets.php" >
-						<input type="image" src="https://www.coinpayments.net/images/pub/buynow-wide-yellow.png" alt="Buy Now with CoinPayments.net">
-						<h3>PLEASE ALLOW UP TO 10-30 MIN FOR THE PAYMENT TO PROCESS.</br>DO NOT FORGET TO COVER TRANSACTION FEES</h3>
+						<input class="btn btn-lg btn-success" type="submit" value="Purchase ticket with CoinPayments">
+						<h3>PLEASE ALLOW UP TO 10-30 MIN FOR THE PAYMENT TO PROCESS.</br></br>DO NOT FORGET TO COVER TRANSACTION FEES</h3>
 					</form>
 				</td>
 
@@ -113,7 +133,7 @@
 						}
 					</script>
 					<input type="text" id="paymentId" value="">
-					<button size="20" onclick="getTicket()">Get Ticket Number</button>
+					<button class="btn btn-sm btn-primary" size="20" onclick="getTicket()">Get Ticket Number</button>
 					</br>
 					<p><b>Ticket#</b> 
 					<span id="ticketStatus" style="display:none">Checking...</span>
@@ -140,7 +160,7 @@
 					</script>
 					<p>Lose your ticket number?</br>No problem. Enter your payout address here</p>
 					<input type="text" id="paymentAddr" value=""/>
-					<button size="20" onclick="findTicket()">Lookup ticket by payout address</button>
+					<button class="btn btn-sm btn-primary" size="20" onclick="findTicket()">Lookup ticket by payout address</button>
 					</p>
 					
 					<h2>Current Lotto Stats</h2>
@@ -181,11 +201,11 @@
 						$potAmount = (($ticketPrice*.69)*$totalSold)+$seedAmount;
 						$marketingAmount =(($ticketPrice*.2)*$totalSold);
 					
-						$rowOne=getRow("<b>Total tickets sold:</b>",$totalSold);
-						$rowTwo=getRow("<b>Win ratio:</b>",$ratio);
-						$rowThree=getRow("<b>Current Pot:</b>","<span style='color:green'><b>".$potAmount." XVG </b></span>");
-						$rowFour=getRow("<b>Raised for Marketing Verge:</b>",$marketingAmount." XVG");
-						$tableOpen="<table cellpadding='10' border=1>";
+						$rowOne=getRow("<span class='label label-info'>Total tickets sold:</span>",$totalSold);
+						$rowTwo=getRow("<span class='label label-info'>Win ratio:</span>",$ratio);
+						$rowThree=getRow("<span class='label label-info'>Current Pot:</span>","<span style='color:green'><b>".$potAmount." XVG </b></span>");
+						$rowFour=getRow("<span class='label label-info'>Raised for Marketing Verge:</span>",$marketingAmount." XVG");
+						$tableOpen="<table class='table table-condensed'>";
 						$tableClose="</table>";
 					
 						echo $tableOpen;
