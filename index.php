@@ -40,11 +40,14 @@
 	</head>
 	
 	<body class="container theme-showcase">
-		<img margin="10" src="https://vergecurrency.com/vergelogo.svg"/>
 		</br>
 		</br>
-		<h1>Welcome to the (unofficial) XVG Lotto!</h1>
+		<div class="jumbotron">
+		<h1>Welcome to the XVG Lotto!</h1>
 		<h3>Hosted and operated by <a href="https://twitter.com/DotNetRussell">@DotNetRussell</a></h2>
+		<img margin="10" src="https://vergecurrency.com/vergelogo.svg"/>
+
+		</div>
 		</br>
 		
 		<table class="table table-bordered">
@@ -77,24 +80,32 @@
 			</tr>
 			<tr>
 				<td>
-					<h3>How it works:</h2>
+					<div class="alert-info">
+					<strong>How it works:</strong>
 					<ol>
 					<li>Enter the wallet address for your winnings</li>
 					<li>Buy a ticket <span style="color:red"><b>(COPY DOWN YOUR PAYMENT ID)</b></span> </br>The purchase takes about 10-30 min, be patient</li>
 					<li>Trade your Payment ID for a lotto ticket number</li>
 					<li>Wait for the drawing!</li>
 					</ol>
-					<p>The drawing will take place in the <a href="https://discordapp.com/channels/325024453065179137/325024453065179137">vergecurrency discord channel</a></p>
-		
-					<form target="_blank"  action="https://www.coinpayments.net/index.php" method="post">
-
+					<p>The drawing will take place in the <strong><a href="https://discordapp.com/channels/325024453065179137/325024453065179137">vergecurrency discord channel</a></strong></p>
+					</div>
+					<form class="form-group" target="_blank"  action="https://www.coinpayments.net/index.php" method="post">
+						<div class="alert-warning">
 						<input type="hidden" name="on1" value="PayoutAddress">
-						<h3>Payout Address:
-						<input type="text" name="ov1" value="" >	
-						<p style="color:red">This is where your winnings go so make sure it's correct</p>
-					
-						</h3>
-					
+						<label for="poaddress">Payout Address:</label>
+						<input type="text" id="poaddress" name="ov1" class="form-control" value="" >	
+						
+						<div>This is where your winnings go so make sure it's correct</div>
+						</div>
+						</br>
+						
+
+						<?php
+							$referralId = $_GET['referralId'];
+							echo '<input type="hidden" name="on2" value="referalId"/>';
+							echo '<input type="hidden" name="ov2" value="'.$referralId.'"/>';
+						?>
 						
 						<input type="hidden" name="first_name" value="anonymous">
 						<input type="hidden" name="last_name" value="anonymous">
@@ -109,7 +120,8 @@
 						<input type="hidden" name="want_shipping" value="0">
 						<input type="hidden" name="success_url" value="https://dotnetrussell.com/xvglotto/tickets.php" >
 						<input class="btn btn-lg btn-success" type="submit" value="Purchase ticket with CoinPayments">
-						<h3>PLEASE ALLOW UP TO 10-30 MIN FOR THE PAYMENT TO PROCESS.</br></br>DO NOT FORGET TO COVER TRANSACTION FEES</h3>
+						</br>
+						<div class="alert-warning"><strong>PLEASE ALLOW UP TO 10-30 MIN FOR THE PAYMENT TO PROCESS.</br></br>DO NOT FORGET TO COVER TRANSACTION FEES</strong></div>
 					</form>
 				</td>
 
@@ -134,7 +146,8 @@
 					</script>
 					<input type="text" id="paymentId" value="">
 					<button class="btn btn-sm btn-primary" size="20" onclick="getTicket()">Get Ticket Number</button>
-					</br>
+					</br><div class="alert-danger"><strong>Coinpayments can be slow.</strong></br>Even after it says payment complete on your end it may take 5-10 more min.</br></br>Please reach out to me on twitter if after 1 hr your payment hasn't posted</div>
+					</br></br>
 					<p><b>Ticket#</b> 
 					<span id="ticketStatus" style="display:none">Checking...</span>
 					</br>
@@ -171,7 +184,7 @@
 						function getRow($label,$data){
 							$trO = "<tr>";
 							$trC = "</tr>";
-							$tdO = "<td>";
+							$tdO = "<td class='bg-primary'>";
 							$tdC = "</td>";
 					
 							$row = $trO . $tdO . $label . $tdC . $tdO . $data . $tdC . $trC;
@@ -201,10 +214,10 @@
 						$potAmount = (($ticketPrice*.69)*$totalSold)+$seedAmount;
 						$marketingAmount =(($ticketPrice*.2)*$totalSold);
 					
-						$rowOne=getRow("<span class='label label-info'>Total tickets sold:</span>",$totalSold);
-						$rowTwo=getRow("<span class='label label-info'>Win ratio:</span>",$ratio);
-						$rowThree=getRow("<span class='label label-info'>Current Pot:</span>","<span style='color:green'><b>".$potAmount." XVG </b></span>");
-						$rowFour=getRow("<span class='label label-info'>Raised for Marketing Verge:</span>",$marketingAmount." XVG");
+						$rowOne=getRow("<span class='bg-primary'>Total tickets sold:</span>",$totalSold);
+						$rowTwo=getRow("<span class='bg-primary'>Win ratio:</span>",$ratio);
+						$rowThree=getRow("<span class='bg-primary'>Current Pot:</span>","<span><b>".$potAmount." XVG </b></span>");
+						$rowFour=getRow("<span class='bg-primary'>Raised for Marketing Verge:</span>",$marketingAmount." XVG");
 						$tableOpen="<table class='table table-condensed'>";
 						$tableClose="</table>";
 					
@@ -252,7 +265,7 @@
 		<table cellpadding="50">
 			<tr>
 				<td>
-					<h2>About:</h2>
+					<h2><strong>About:</strong></h2>
 					<p>This lotto was created to help fund advertising of Verge Currency. I don't have any affiliation with XVG. 
 					</br>
 					</br>Currently, each ticket sale will pay for the following:
@@ -261,9 +274,24 @@
 					</br>20% - XVG Marketing Team
 					</br>69% - Added to this weeks lotto pot
 					</br>
-					<h4>TICKET SALES WILL BE STOPPED 2 HOURS PRIOR TO DRAWING TO ALLOW ALL TICKETS TO CLEAR</h4>
+					<div class="bg-info">
+						<h4>TICKET SALES WILL BE STOPPED 2 HOURS PRIOR TO DRAWING TO ALLOW ALL TICKETS TO CLEAR</h4>
+					<div>
 					</p>
 					<p><b>Drawings will take place once a week on Sunday 5pm EST</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					
+					<div class="panel panel-default">
+					<div class="panel panel-heading">Referral Bonus!</div>
+					<div class="panel panel-body">
+					<p>For every ticket you sell with the below link, you'll get 10xvg at the drawing </p>
+					<h3 style="font-size:20" class="label label-info">https://www.xvglotto.com?referralId=YOUR PAYOUT ADDRESS HERE</h3>
+					</div>
+					</div>
+					
 				</td>
 			</tr>
 		</table>

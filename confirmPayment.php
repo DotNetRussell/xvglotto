@@ -80,6 +80,7 @@
 	
 		//Retrieve the payout addrress from the api response
 		$payoutAddress = $result["result"]["checkout"]["ov1"];
+		$refId = $result["result"]["checkout"]["ov2"];
 		
 		//Open the db connection
 		$mysqli = new mysqli($configJson["database"]["host"], $configJson["database"]["user"], 
@@ -111,6 +112,15 @@
 			$mysqli->query($burnId);
 		}
 	
+		$referalId = mysqli_real_escape_string($mysqli,$refId);
+
+		if(strlen($referalId) > 0){
+
+			$query = "INSERT INTO referals (payoutAddress,referals) values('".$referalId."',1);";
+			$mysqli->query($query);
+		}
+
+
 		//Find all lotto numbers that haven't been assigned
 		$query = "SELECT * FROM tickets WHERE PaymentAddress = ''";
 
