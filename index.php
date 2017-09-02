@@ -118,7 +118,7 @@
 						<input type="hidden" name="currency" value="XVG">
 						<input type="hidden" name="amountf" value="500.00000000">
 						<input type="hidden" name="want_shipping" value="0">
-						<input type="hidden" name="success_url" value="https://dotnetrussell.com/xvglotto/tickets.php" >
+						<input type="hidden" name="success_url" value="https:www.xvglotto.com" >
 						<input class="btn btn-lg btn-success" type="submit" value="Purchase ticket with CoinPayments">
 						</br>
 						<div class="alert-warning"><strong>PLEASE ALLOW UP TO 10-30 MIN FOR THE PAYMENT TO PROCESS.</br></br>DO NOT FORGET TO COVER TRANSACTION FEES</strong></div>
