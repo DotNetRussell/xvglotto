@@ -36,7 +36,7 @@
 		<script src="./js/bootstrap.min.js"></script>
 		<script>
 			// Set the date we're counting down to
-			var countDownDate = new Date("SEP 10, 2017 17:00:00 GMT-4").getTime();
+			var countDownDate = new Date("SEP 25, 2017 17:00:00 GMT-4").getTime();
 		
 			// Update the count down every 1 second
 			var x = setInterval(function() {
@@ -53,14 +53,18 @@
   			var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 			
+
   			// Display the result in the element with id="demo"
-  			document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-  			+ minutes + "m " + seconds + "s ";
+  			var elements = document.getElementsByClassName("countdown");
+			Array.prototype.forEach.call(elements,function(element)
+				{
+					element.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+				});
 			
   			// If the count down is finished, write some text 
   			if (distance < 0) {
     			clearInterval(x);
-    			document.getElementById("demo").innerHTML = "EXPIRED";
+    			document.getElementsByClassName("countdown").innerHTML = "EXPIRED";
   			}
 			}, 1000);
 			
@@ -69,11 +73,10 @@
 	
 	</head>
 <body class="index-page">
-
 <nav class="navbar navbar-expand-lg bg-primary">
   <div class="container">
       <div class="navbar-translate">
-          <a id="#demo" class="navbar-brand" href="#">Next Drawing in: 1d 22h 41m 50s</a>
+          <div class="navbar-brand">Next drawing in: <a class="navbar-brand countdown" href="#"></a></div>
       </div>
       <div class="collapse navbar-collapse justify-content-end" id="example-navbar-primary" data-nav-image="./assets/img/blurred-image-1.jpg">
           <ul class="navbar-nav">
@@ -114,7 +117,7 @@
             <div class="jumbotron">
             <h1>Welcome to the XVG Lotto!</h1>
             <h1>NEXT DRAWING:</h1>
-            <h2 id="demo"> 1d 22h 41m 50s </h2>
+            <h2 class="countdown"> 1d 22h 41m 50s </h2>
             <button class="btn btn-primary btn-lg">
               <a class="buy-ticket" href="#ticket-container">
                 <i class="now-ui-icons business_money-coins"></i>
@@ -134,6 +137,35 @@
       </div>
   </div>
 
+<?php
+		$configFile = file_get_contents("/var/prison/config.json");
+		$configJson = json_decode($configFile,true);
+		$mysqli = new mysqli($configJson["database"]["host"], $configJson["database"]["user"], $configJson["database"]["pass"], $configJson["database"]["dbname"]); 
+		$query = "SELECT * FROM potinfo  WHERE id='1'";
+		$results=$mysqli->query($query);
+		$currentStatsRows=$results->fetch_all(MYSQLI_ASSOC);
+		$currentStats = $currentStatsRows[0];
+		$totalSold = $currentStats["ticketsSold"];
+		$ratio="";
+		if($totalSold<1000){
+			$ratio="1:1000";
+		}
+		else{
+			$ratio = "1:".$totalSold;
+		}
+		$seedAmount = $currentStats["seedAmount"];
+		$ticketPrice = $currentStats["ticketPrice"];
+		$potAmount = (($ticketPrice*.69)*$totalSold)+$seedAmount;
+		$marketingAmount =(($ticketPrice*.2)*$totalSold);
+
+		echo "<input type='hidden' id='totalSold' value='".$totalSold."' />";
+		echo "<input type='hidden' id='winRatio' value='".$ratio."' />";
+		echo "<input type='hidden' id='seedAmount' value='".$seedAmount."' />";
+		echo "<input type='hidden' id='ticketPrice' value='".$ticketPrice."' />";
+		echo "<input type='hidden' id='potAmount' value='".$potAmount."' />";
+		echo "<input type='hidden' id='marketingAmount' value='".$marketingAmount."' />";
+	?>
+
 <section id="stats-container" data-background-color="gray">
     <div class="container">
       <h4> Current Lotto Stats </h4>
@@ -142,23 +174,29 @@
         <div class="col-lg-3">
           <i class="now-ui-icons shopping_tag-content"></i>
           <p>Total tickets sold: <br>
-          200</p>
+          <p id="totalTicketsSold"></p></p>
         </div>
         <div class="col-lg-3">
           <i class="now-ui-icons business_chart-bar-32"></i>
-          <p>Win ratio: 1:1000 </p>
+          <p>Win ratio: <p id="winRatioText"> </p></p>
         </div>
         <div class="col-lg-3">
           <i class="now-ui-icons business_money-coins"></i>
-          <p>Current Pot: 20000 XVG</p>
+          <p>Current Pot: <p id="currentPotInfo"></p> XVG</p>
         </div>
         <div class="col-lg-3">
           <i class="now-ui-icons business_bulb-63"></i>
-          <p>Raised for Marketing Verge: 110 XVG</p>
+          <p>Raised for Marketing: <p id="marketingAmountTag"></p></p>
         </div>
     </div>
   </div>
 </section>
+<script>
+	document.getElementById("totalTicketsSold").innerText = document.getElementById("totalSold").value;
+	document.getElementById("winRatioText").innerText = document.getElementById("winRatio").value;
+	document.getElementById("currentPotInfo").innerText = document.getElementById("potAmount").value;
+	document.getElementById("marketingAmountTag").innerText = document.getElementById("marketingAmount").value;
+</script>
 
 <section id="ticket-container" data-background-color="gray">
     <div class="container">
@@ -180,7 +218,7 @@
                           <h4><a href="#">Payout Address:</a></h4>  
                             <form class="form-group" target="_blank"  action="https://www.coinpayments.net/index.php" method="post">
                               <input type="hidden" name="on1" value="PayoutAddress">
-                              <input type="text" placeholder="Payout Address" id="poaddress" name="ov1" class="form-control" value="" >  
+                              <input type="text" placeholder="Payout Address" id="poaddress" name="ov1" class="form-control" value="" required>  
                               
                               <p class="winnings">This is where your winnings go so make sure it's correct</p>
                               
@@ -199,7 +237,7 @@
                               <input type="hidden" name="item_name" value="Lotto Ticket">
                               <input type="hidden" name="item_desc" value="1 XVG Lotto Ticket">
                               <input type="hidden" name="currency" value="XVG">
-                              <input type="hidden" name="amountf" value="500.00000000">
+                              <input id="ticketPriceButton" type="hidden" name="amountf" value="300.00000000">
                               <input type="hidden" name="want_shipping" value="0">
                               <input type="hidden" name="success_url" value="https:www.xvglotto.com" >
                               <input class="btn btn-lg btn-success" type="submit" value="Purchase ticket with CoinPayments">
@@ -212,7 +250,10 @@
                     </div>
                 </div>
             </div>
-
+<script>
+	var ticketPrice = document.getElementById("ticketPrice").value;
+	document.getElementById("ticketPriceButton").value = ticketPrice;
+</script>
             <div class="col-lg-6 col-sm-12">
                 <div class="card" data-background-color="black">
                     <div class="card-block content-danger">
