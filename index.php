@@ -239,7 +239,7 @@
                               <input type="hidden" name="currency" value="XVG">
                               <input id="ticketPriceButton" type="hidden" name="amountf" value="300.00000000">
                               <input type="hidden" name="want_shipping" value="0">
-                              <input type="hidden" name="success_url" value="https:www.xvglotto.com" >
+                              <input type="hidden" name="success_url" value="https://www.xvglotto.com" >
                               <input class="btn btn-lg btn-success" type="submit" value="Purchase ticket with CoinPayments">
                               </br>
                                 <p class="text-warning last">
