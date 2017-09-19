@@ -30,6 +30,10 @@ a.buy-ticket:hover {
   text-decoration: none;
 }
 
+.navbar-brand {
+  color: #ffffff;
+}
+
 
 /* Ticket Section */
 

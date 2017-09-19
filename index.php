@@ -182,7 +182,7 @@
         </div>
         <div class="col-lg-3">
           <i class="now-ui-icons business_money-coins"></i>
-          <p>Current Pot: <p id="currentPotInfo"></p> XVG</p>
+          <p>Current Pot: <p id="currentPotInfo"></p><p>$XVG</p>
         </div>
         <div class="col-lg-3">
           <i class="now-ui-icons business_bulb-63"></i>
