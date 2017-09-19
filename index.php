@@ -182,7 +182,7 @@
         </div>
         <div class="col-lg-3">
           <i class="now-ui-icons business_money-coins"></i>
-          <p>Current Pot: <p id="currentPotInfo"></p><p>$XVG</p>
+          <p>Current Pot: <p id="currentPotInfo"></p></p>
         </div>
         <div class="col-lg-3">
           <i class="now-ui-icons business_bulb-63"></i>
@@ -265,13 +265,13 @@
 
                         <script>
                             function getTicket(){
-                              document.getElementById("ticketStatus").style.display="";
-                              document.getElementById("ticketStatus").innerText = "Checking...";
+                              document.getElementById("ticketStatusTag").style.display="";
+                              document.getElementById("ticketStatusTag").innerText = "Checking...";
                               var xhttp = new XMLHttpRequest();
                               var paymentId = document.getElementById("paymentId").value;
                               xhttp.onreadystatechange = function() {
                                   if (this.readyState == 4 && this.status == 200) {
-                                      document.getElementById("ticketStatus").innerText = this.responseText.trim();
+                                      document.getElementById("ticketStatusTag").innerText = this.responseText.trim();
                                   }
                               }
                               xhttp.open("GET", "confirmPayment.php?paymentId="+paymentId, true);
@@ -286,21 +286,20 @@
                           </br></br>
 
                           <div class="card-footer">
-                          <h4>Ticket#</h4> 
-                          <span id="ticketStatus" style="display:none">Checking...</span>
-                          </br>
+                          <div>Ticket# <span id="ticketStatusTag" style="display:none">Checking...</span></div>
+                          </br></br>
 
                           
                           <script>
                           
                             function findTicket(){
-                              document.getElementById("ticketStatus").style.display="";
-                              document.getElementById("ticketStatus").innerText = "Checking...";
+                              document.getElementById("ticketStatusTag").style.display="";
+                              document.getElementById("ticketStatusTag").innerText = "Checking...";
                               var xhttp = new XMLHttpRequest();
                               var walletAddress = document.getElementById("paymentAddr").value;
                               xhttp.onreadystatechange = function() {
                                   if (this.readyState == 4 && this.status == 200) {
-                                      document.getElementById("ticketStatus").innerText = this.responseText.trim();
+                                      document.getElementById("ticketStatusTag").innerText = this.responseText.trim();
                                   }
                               }
                               xhttp.open("GET", "retrieveNumber.php?paymentAddress="+walletAddress, true);
@@ -308,7 +307,7 @@
                           
                             }
                           </script>
-                          <input class="form-control" placeholder="Ticket Number" type="text" id="paymentAddr" value=""/>
+                          <input class="form-control" placeholder="Payout Address" type="text" id="paymentAddr" value=""/>
                           <p class="winnings">Lose your ticket number? No problem. Enter your payout address here</p>
                           <button class="btn btn-lg btn-primary" size="20" onclick="findTicket()">Lookup ticket by payout address</button>
 
