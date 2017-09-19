@@ -240,7 +240,8 @@
                               <input id="ticketPriceButton" type="hidden" name="amountf" value="300.00000000">
                               <input type="hidden" name="want_shipping" value="0">
                               <input type="hidden" name="success_url" value="https://www.xvglotto.com" >
-                              <input class="btn btn-lg btn-success" type="submit" value="Purchase ticket with CoinPayments">
+                              <input id="submitButton" class="btn btn-lg btn-success" type="submit" value="">
+
                               </br>
                                 <p class="text-warning last">
                                   PLEASE ALLOW UP TO 10-30 MIN FOR THE PAYMENT TO PROCESS.</br>DO NOT FORGET TO COVER TRANSACTION FEES
@@ -253,6 +254,7 @@
 <script>
 	var ticketPrice = document.getElementById("ticketPrice").value;
 	document.getElementById("ticketPriceButton").value = ticketPrice;
+	document.getElementById("submitButton").value = "Purchase ticket with CoinPayments ("+ticketPrice+" XVG per)";
 </script>
             <div class="col-lg-6 col-sm-12">
                 <div class="card" data-background-color="black">
