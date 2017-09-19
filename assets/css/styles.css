@@ -34,6 +34,12 @@ a.buy-ticket:hover {
   color: #ffffff;
 }
 
+#ticketstatus {
+  float: left;
+  padding-top: 35px;
+  padding-left: 15px;
+  font-size: 1.25em;
+}
 
 /* Ticket Section */
 
