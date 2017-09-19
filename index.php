@@ -6,7 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>XVG Lotto</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-    <!--     Fonts and icons     -->
+    
+    <!-- Open Graph Tags --> 
+    <meta property="og:title" content="XVG Lotto" /> 
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://xvglotto.com" />
+    <meta property="og:image" content="https://xvglotto.com/assets/img/og.jpg" />
+    <meta property="og:description" content="Buy a lotto ticket, win XVG, and support Verge Currency"/>
+
+    <!-- Twitter Open Graph -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@xvglotto" />
+    <meta name="twitter:creator" content="@dotnetrussell" />
+    <meta property="og:url" content="https://xvglotto.com" />
+    <meta property="og:title" content="XVG Lotto" />
+    <meta property="og:description" content="Buy a lotto ticket, win XVG, and support Verge Currency" />
+    <meta property="og:image" content="https://xvglotto.com/assets/img/og.jpg" />
+
+    <!-- Fonts and icons -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <!-- CSS Files -->
@@ -160,7 +177,7 @@
                           <li><p>The drawing will take place in the <a href="https://discordapp.com/channels/325024453065179137/325024453065179137">vergecurrency discord channel</a></p></li>
                         </ol>
                         <div class="card-footer">
-                          <h4><a href="#nuk">Payout Address:</a></h4>  
+                          <h4><a href="#">Payout Address:</a></h4>  
                             <form class="form-group" target="_blank"  action="https://www.coinpayments.net/index.php" method="post">
                               <input type="hidden" name="on1" value="PayoutAddress">
                               <input type="text" placeholder="Payout Address" id="poaddress" name="ov1" class="form-control" value="" >  
