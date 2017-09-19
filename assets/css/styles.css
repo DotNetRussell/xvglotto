@@ -1,0 +1,231 @@
+/* Custom Styles */ 
+
+img.verge-logo {
+    max-width: 25px;
+    top: -2px;
+    position: relative;
+}
+
+.jumbotron {
+  background: rgba(31,160,86,.7);
+}
+
+.bg-primary {
+  background-color: #1FA056 !important;
+}
+
+.btn-success {
+  background-color:#1FA056 !important;
+}
+
+.btn-success:hover {
+  opacity: 0.8;
+}
+
+a.buy-ticket {
+  color:#fff;
+}
+
+a.buy-ticket:hover {
+  text-decoration: none;
+}
+
+
+/* Ticket Section */
+
+
+#ticket-container {
+  padding-top: 70px;
+}
+
+#ticket-container .now-ui-icons {
+  display: inline-block;
+  font-size: inherit;
+  text-rendering: auto;
+  text-align: center;
+  position: relative;
+  top: 10px;
+}
+
+#ticket-container h3 {
+  color: #fff;
+  font-size: 3em;
+  margin-top: 15px;
+  margin-bottom: .75em;
+  line-height: 1.25em;
+  text-align: center;
+  padding: .75rem 1.25rem;
+  background-color: rgba(0, 0, 0, .03);
+  border-bottom: 1px solid rgba(0, 0, 0, .125);
+}
+
+[data-background-color="gray"] {
+    background-color: #eeeeee;
+}
+
+.content-body {
+  background-color: #eeeeee;
+  max-width: 100%;
+}
+
+span.attention {
+  color: #FF3636;
+  font-weight: bold;
+}
+
+.winnings {
+  padding-top: 0.25em;
+}
+
+.text-warning {
+  font-size: 0.9em;
+  padding-top: 0.25em;
+  text-transform: uppercase;
+}
+
+.blockquote.blockquote-primary {
+    border-color: #f96332;
+    color: #f96332;
+}    
+
+a.twitter {
+  color: #0084b4 !important;
+}
+
+.text-warning.last {
+  padding-bottom: 8px;
+}
+
+/* Stats Container */ 
+
+#stats-container {
+  padding-top: 10px;
+}
+
+#stats-container h4 {
+  color: #2c2c2c;
+  font-size: 3em;
+  margin-top: 15px;
+  margin-bottom: .75em;
+  line-height: 1.25em;
+  text-align: center;
+  padding: .75rem 1.25rem;
+}
+
+#stats-container p {
+  color: #2CA8FF !important;
+  font-size: 1.5em;
+  padding-top: 10px;
+}
+
+#stats-container i {
+  font-size: 30px;
+  line-height: 2.7;
+  max-width: 80px;
+  color: #888888;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  border-radius: 50%;
+  box-shadow: 0px 9px 35px -6px rgba(0, 0, 0, 0.3);
+  background-color: #FFFFFF;
+  position: relative;
+}
+
+#stats-container .now-ui-icons {
+  box-shadow: 0px 9px 30px -6px #2CA8FF;
+  color: #2CA8FF;
+  background: #2c2c2c;
+}
+
+.icon {
+  padding: 10px 0 0px;
+}
+
+
+
+
+/* Ordered Lists */ 
+
+ol {
+  counter-reset: li; 
+  margin-left: 0; 
+  padding-left: 0; 
+  color: #9A9A9A;
+  padding: 1em;
+  font-weight: 300;
+}
+
+
+ol > li {
+  position: relative; 
+  list-style: none; 
+  margin: 0; 
+  padding-left: 15px; 
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+
+ol > li p {
+  padding-left: 0.5em;
+}
+
+ol > li p:before {
+  content: counter(li); 
+  counter-increment: li; 
+  position: absolute; 
+  left: -1.3em;
+  top: 50%;
+  background: #888; 
+  height: 2em;
+  width: 2em;
+  margin-top: -1em;
+  line-height: 1.5em;
+  border: .2em solid #fff;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 2em;
+}
+
+
+/* Card Styles */ 
+
+.card-block {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 1.25rem;
+}
+
+
+/* About Container */ 
+
+#about-container {
+  color: #2c2c2c;
+  padding-bottom: 70px;
+}
+
+#about-container .now-ui-icons {
+  display: inline-block;
+  font-size: inherit;
+  text-rendering: auto;
+  text-align: center;
+  position: relative;
+  top: 3px;
+}
+
+#about-container p {
+  font-size: 1.25em;
+}
+
+p.text-info {
+  font-size: 1em !important;
+}
+
+#about-container ul li {
+ font-size: 1.25em;
+}
+
+/* Footer */ 
+

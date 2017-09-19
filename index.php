@@ -1,9 +1,22 @@
 <html>
 	<head>
-		<link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">		
-		<script src="./bootstrap/assets/js/html5shiv.js"></script>
-		<script src="./bootstrap/assets/js/respond.min.js"></script>
-		<script src="./bootstrap/js/bootstrap.min.js"></script>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>XVG Lotto</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <!-- CSS Files -->
+    <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="./assets/css/now-ui-kit.css?v=1.1.0" rel="stylesheet" />
+    <link href="./assets/css/styles.css" rel="stylesheet" />
+    <!-- JS --> 
+		<script src="./assets/js/html5shiv.js"></script>
+		<script src="./assets/js/respond.min.js"></script>
+		<script src="./js/bootstrap.min.js"></script>
 		<script>
 			// Set the date we're counting down to
 			var countDownDate = new Date("SEP 10, 2017 17:00:00 GMT-4").getTime();
@@ -38,266 +51,313 @@
 			
 	
 	</head>
-	
-	<body class="container theme-showcase">
-		</br>
-		</br>
-		<div class="jumbotron">
-		<h1>Welcome to the XVG Lotto!</h1>
-		<h3>Hosted and operated by <a href="https://twitter.com/DotNetRussell">@DotNetRussell</a></h2>
-		<img margin="10" src="https://vergecurrency.com/vergelogo.svg"/>
+<body class="index-page">
 
-		</div>
-		</br>
-		
-		<table class="table table-bordered">
-			<tr>
-				<th>
-					<table cellpadding="50" >
-						<tr>
-							<td>
-								<img src="https://d30y9cdsu7xlg0.cloudfront.net/png/936-200.png" width="80"/>
-							</td>
-
-							<td>
-								<h1>Buy a Ticket</h1>
-							</td>
-						</tr>
-					</table>
-				</th>
-				<th>
-					<table>
-						<tr>
-							<td>
-								<img src="https://image.flaticon.com/icons/png/512/8/8817.png" width="50"/>
-							</td>
-							<td>
-								<h1>Redeem a Ticket</h1>
-							</td>
-						</tr>
-					</table>
-				</th>
-			</tr>
-			<tr>
-				<td>
-					<div class="alert-info">
-					<strong>How it works:</strong>
-					<ol>
-					<li>Enter the wallet address for your winnings</li>
-					<li>Buy a ticket <span style="color:red"><b>(COPY DOWN YOUR PAYMENT ID)</b></span> </br>The purchase takes about 10-30 min, be patient</li>
-					<li>Trade your Payment ID for a lotto ticket number</li>
-					<li>Wait for the drawing!</li>
-					</ol>
-					<p>The drawing will take place in the <strong><a href="https://discordapp.com/channels/325024453065179137/325024453065179137">vergecurrency discord channel</a></strong></p>
-					</div>
-					<form class="form-group" target="_blank"  action="https://www.coinpayments.net/index.php" method="post">
-						<div class="alert-warning">
-						<input type="hidden" name="on1" value="PayoutAddress">
-						<label for="poaddress">Payout Address:</label>
-						<input type="text" id="poaddress" name="ov1" class="form-control" value="" >	
-						
-						<div>This is where your winnings go so make sure it's correct</div>
-						</div>
-						</br>
-						
-
-						<?php
-							$referralId = $_GET['referralId'];
-							echo '<input type="hidden" name="on2" value="referalId"/>';
-							echo '<input type="hidden" name="ov2" value="'.$referralId.'"/>';
-						?>
-						
-						<input type="hidden" name="first_name" value="anonymous">
-						<input type="hidden" name="last_name" value="anonymous">
-						<input type="hidden" name="email" value="anonymous@anon.com">
-						<input type="hidden" name="cmd" value="_pay_simple">
-						<input type="hidden" name="reset" value="1">
-						<input type="hidden" name="merchant" value="9451460c93a94f23465c9c21d35ab5e6">
-						<input type="hidden" name="item_name" value="Lotto Ticket">
-						<input type="hidden" name="item_desc" value="1 XVG Lotto Ticket">
-						<input type="hidden" name="currency" value="XVG">
-						<input type="hidden" name="amountf" value="500.00000000">
-						<input type="hidden" name="want_shipping" value="0">
-						<input type="hidden" name="success_url" value="https:www.xvglotto.com" >
-						<input class="btn btn-lg btn-success" type="submit" value="Purchase ticket with CoinPayments">
-						</br>
-						<div class="alert-warning"><strong>PLEASE ALLOW UP TO 10-30 MIN FOR THE PAYMENT TO PROCESS.</br></br>DO NOT FORGET TO COVER TRANSACTION FEES</strong></div>
-					</form>
-				</td>
-
-				<td>
-
-					<h3>Make your payment already?</br>Trade your Payment ID for your number here!</h3>
-					
-					<script>
-						function getTicket(){
-							document.getElementById("ticketStatus").style.display="";
-							document.getElementById("ticketStatus").innerText = "Checking...";
-							var xhttp = new XMLHttpRequest();
-							var paymentId = document.getElementById("paymentId").value;
-							xhttp.onreadystatechange = function() {
-  								if (this.readyState == 4 && this.status == 200) {
-    									document.getElementById("ticketStatus").innerText = this.responseText.trim();
-  								}
-							}
-							xhttp.open("GET", "confirmPayment.php?paymentId="+paymentId, true);
-							xhttp.send();
-						}
-					</script>
-					<input type="text" id="paymentId" value="">
-					<button class="btn btn-sm btn-primary" size="20" onclick="getTicket()">Get Ticket Number</button>
-					</br><div class="alert-danger"><strong>Coinpayments can be slow.</strong></br>Even after it says payment complete on your end it may take 5-10 more min.</br></br>Please reach out to me on twitter if after 1 hr your payment hasn't posted</div>
-					</br></br>
-					<p><b>Ticket#</b> 
-					<span id="ticketStatus" style="display:none">Checking...</span>
-					</br>
-					</br>
-					</br>
-					
-					<script>
-					
-						function findTicket(){
-							document.getElementById("ticketStatus").style.display="";
-							document.getElementById("ticketStatus").innerText = "Checking...";
-							var xhttp = new XMLHttpRequest();
-							var walletAddress = document.getElementById("paymentAddr").value;
-							xhttp.onreadystatechange = function() {
-  								if (this.readyState == 4 && this.status == 200) {
-    									document.getElementById("ticketStatus").innerText = this.responseText.trim();
-  								}
-							}
-							xhttp.open("GET", "retrieveNumber.php?paymentAddress="+walletAddress, true);
-							xhttp.send();
-					
-						}
-					</script>
-					<p>Lose your ticket number?</br>No problem. Enter your payout address here</p>
-					<input type="text" id="paymentAddr" value=""/>
-					<button class="btn btn-sm btn-primary" size="20" onclick="findTicket()">Lookup ticket by payout address</button>
-					</p>
-					
-					<h2>Current Lotto Stats</h2>
-					<?php
-					
-					
-					
-						function getRow($label,$data){
-							$trO = "<tr>";
-							$trC = "</tr>";
-							$tdO = "<td class='bg-primary'>";
-							$tdC = "</td>";
-					
-							$row = $trO . $tdO . $label . $tdC . $tdO . $data . $tdC . $trC;
-					
-							return $row;
-						}
-					
-					
-						$configFile = file_get_contents("/var/prison/config.json");
-						$configJson = json_decode($configFile,true);
-					
- 						$mysqli = new mysqli($configJson["database"]["host"], $configJson["database"]["user"], $configJson["database"]["pass"], $configJson["database"]["dbname"]); 
-						$query = "SELECT * FROM potinfo  WHERE id='1'";
-						$results=$mysqli->query($query);
-						$currentStatsRows=$results->fetch_all(MYSQLI_ASSOC);
-						$currentStats = $currentStatsRows[0];
-						$totalSold = $currentStats["ticketsSold"];
-						$ratio="";
-						if($totalSold<1000){
-							$ratio="1:1000";
-						}
-						else{
-							$ratio = "1:".$totalSold;
-						}
-						$seedAmount = $currentStats["seedAmount"];
-						$ticketPrice = $currentStats["ticketPrice"];
-						$potAmount = (($ticketPrice*.69)*$totalSold)+$seedAmount;
-						$marketingAmount =(($ticketPrice*.2)*$totalSold);
-					
-						$rowOne=getRow("<span class='bg-primary'>Total tickets sold:</span>",$totalSold);
-						$rowTwo=getRow("<span class='bg-primary'>Win ratio:</span>",$ratio);
-						$rowThree=getRow("<span class='bg-primary'>Current Pot:</span>","<span><b>".$potAmount." XVG </b></span>");
-						$rowFour=getRow("<span class='bg-primary'>Raised for Marketing Verge:</span>",$marketingAmount." XVG");
-						$tableOpen="<table class='table table-condensed'>";
-						$tableClose="</table>";
-					
-						echo $tableOpen;
-					
-						echo $rowOne;
-						echo $rowTwo;
-						echo $rowThree;
-						echo $rowFour;
-						echo $tableClose;
-					?>
-					
+<nav class="navbar navbar-expand-lg bg-primary">
+  <div class="container">
+      <div class="navbar-translate">
+          <a id="#demo" class="navbar-brand" href="#">Next Drawing in: 1d 22h 41m 50s</a>
+      </div>
+      <div class="collapse navbar-collapse justify-content-end" id="example-navbar-primary" data-nav-image="./assets/img/blurred-image-1.jpg">
+          <ul class="navbar-nav">
+              <li class="nav-item active">
+                  <a class="nav-link" href="#ticket-container">
+                      <i class="now-ui-icons shopping_tag-content"></i>
+                      <p>Buy A Ticket</p>
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#ticket-container">
+                      <i class="now-ui-icons business_money-coins"></i>
+                      <p>Redeem A Ticket</p>
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="https://twitter.com/DotNetRussell">
+                      <i class="fa fa-twitter"></i>
+                      <p>Tweet Me</p>
+                  </a>
+              </li>
+          </ul>
+      </div>
+  </div>
+</nav>
 
 
-				</td>
-			</tr>
-		</table>
 
 
-		</hr>
+  <div class="page-header clear-filter" filter-color="purpish">
+      <div class="page-header-image" data-parallax="true" style="background-image: url(&quot;https://i.imgur.com/93MQjPN.jpg&quot;); transform: translate3d(0px, 0px, 0px);">
+      </div>
+
+      <div class="container">
+          <div class="content-center brand">
+            </br>
+            </br>
+            <div class="jumbotron">
+            <h1>Welcome to the XVG Lotto!</h1>
+            <h1>NEXT DRAWING:</h1>
+            <h2 id="demo"> 1d 22h 41m 50s </h2>
+            <button class="btn btn-primary btn-lg">
+              <a class="buy-ticket" href="#ticket-container">
+                <i class="now-ui-icons business_money-coins"></i>
+                  Buy A Ticket
+              </a>
+            </button>
+            </div>
+            </br>  
+          </div>
+          <h5 class="category category-absolute">Hosted and operated by
+            <a href="https://twitter.com/DotNetRussell" target="_blank">
+                @DotNetRussell
+            </a> for 
+            <a href="https://www.vergecurrency.com" target="_blank">
+                <img src="./assets/img/verge-logo.png" class="verge-logo"> 
+            Verge.</a></h5>
+      </div>
+  </div>
+
+<section id="stats-container" data-background-color="gray">
+    <div class="container">
+      <h4> Current Lotto Stats </h4>
+
+      <div class="row text-center">
+        <div class="col-lg-3">
+          <i class="now-ui-icons shopping_tag-content"></i>
+          <p>Total tickets sold: <br>
+          200</p>
+        </div>
+        <div class="col-lg-3">
+          <i class="now-ui-icons business_chart-bar-32"></i>
+          <p>Win ratio: 1:1000 </p>
+        </div>
+        <div class="col-lg-3">
+          <i class="now-ui-icons business_money-coins"></i>
+          <p>Current Pot: 20000 XVG</p>
+        </div>
+        <div class="col-lg-3">
+          <i class="now-ui-icons business_bulb-63"></i>
+          <p>Raised for Marketing Verge: 110 XVG</p>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section id="ticket-container" data-background-color="gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-sm-12">
+                <div class="card" data-background-color="black">
+                    <div class="card-block content-danger">
+                        <h3> <i class="now-ui-icons shopping_tag-content"></i> Buy A Ticket </h3>
+                        <h4 class="card-title">How It Works:</h4>
+                        <ol>
+                          <li><p>Enter the wallet address for your winnings</p></li>
+                          <li><p>Buy a ticket <span class="attention">(COPY DOWN YOUR PAYMENT ID)</span><br>
+                          The purchase takes about 10-30 min, be patient </p></li>
+                          <li><p>Trade your Payment ID for a lotto ticket number</p></li>
+                          <li><p>Wait for the drawing!</p></li>
+                          <li><p>The drawing will take place in the <a href="https://discordapp.com/channels/325024453065179137/325024453065179137">vergecurrency discord channel</a></p></li>
+                        </ol>
+                        <div class="card-footer">
+                          <h4><a href="#nuk">Payout Address:</a></h4>  
+                            <form class="form-group" target="_blank"  action="https://www.coinpayments.net/index.php" method="post">
+                              <input type="hidden" name="on1" value="PayoutAddress">
+                              <input type="text" placeholder="Payout Address" id="poaddress" name="ov1" class="form-control" value="" >  
+                              
+                              <p class="winnings">This is where your winnings go so make sure it's correct</p>
+                              
+                              <?php
+                                $referralId = $_GET['referralId'];
+                                echo '<input type="hidden" name="on2" value="referalId"/>';
+                                echo '<input type="hidden" name="ov2" value="'.$referralId.'"/>';
+                              ?>
+                              
+                              <input type="hidden" name="first_name" value="anonymous">
+                              <input type="hidden" name="last_name" value="anonymous">
+                              <input type="hidden" name="email" value="anonymous@anon.com">
+                              <input type="hidden" name="cmd" value="_pay_simple">
+                              <input type="hidden" name="reset" value="1">
+                              <input type="hidden" name="merchant" value="9451460c93a94f23465c9c21d35ab5e6">
+                              <input type="hidden" name="item_name" value="Lotto Ticket">
+                              <input type="hidden" name="item_desc" value="1 XVG Lotto Ticket">
+                              <input type="hidden" name="currency" value="XVG">
+                              <input type="hidden" name="amountf" value="500.00000000">
+                              <input type="hidden" name="want_shipping" value="0">
+                              <input type="hidden" name="success_url" value="https:www.xvglotto.com" >
+                              <input class="btn btn-lg btn-success" type="submit" value="Purchase ticket with CoinPayments">
+                              </br>
+                                <p class="text-warning last">
+                                  PLEASE ALLOW UP TO 10-30 MIN FOR THE PAYMENT TO PROCESS.</br>DO NOT FORGET TO COVER TRANSACTION FEES
+                                 </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-sm-12">
+                <div class="card" data-background-color="black">
+                    <div class="card-block content-danger">
+                        <h3> <i class="now-ui-icons business_money-coins"></i> Redeem A Ticket </h3>
+                        <h4 class="card-title">Make Your Payment Already?</h4>
+                        <p class="card-description">
+                            Trade your Payment ID for your number here! 
+                        </p>
+
+                        <script>
+                            function getTicket(){
+                              document.getElementById("ticketStatus").style.display="";
+                              document.getElementById("ticketStatus").innerText = "Checking...";
+                              var xhttp = new XMLHttpRequest();
+                              var paymentId = document.getElementById("paymentId").value;
+                              xhttp.onreadystatechange = function() {
+                                  if (this.readyState == 4 && this.status == 200) {
+                                      document.getElementById("ticketStatus").innerText = this.responseText.trim();
+                                  }
+                              }
+                              xhttp.open("GET", "confirmPayment.php?paymentId="+paymentId, true);
+                              xhttp.send();
+                            }
+                          </script>
+                          <input type="text" placeholder="Payout ID" class="form-control" id="paymentId" value="">
+                          <button class="btn btn-lg btn-success" size="20" onclick="getTicket()">Get Ticket Number</button>
+                          </br><p class="text-warning">Coinpayments can be slow. Even after it says payment complete on your end it may take 5-10 more min.</br>
+
+                          <p>Please reach out to me on <a class="twitter" href="https://twitter.com/DotNetRussell" target="_blank">Twitter</a> if after 1 hr your payment hasn't posted</p>
+                          </br></br>
+
+                          <div class="card-footer">
+                          <h4>Ticket#</h4> 
+                          <span id="ticketStatus" style="display:none">Checking...</span>
+                          </br>
+
+                          
+                          <script>
+                          
+                            function findTicket(){
+                              document.getElementById("ticketStatus").style.display="";
+                              document.getElementById("ticketStatus").innerText = "Checking...";
+                              var xhttp = new XMLHttpRequest();
+                              var walletAddress = document.getElementById("paymentAddr").value;
+                              xhttp.onreadystatechange = function() {
+                                  if (this.readyState == 4 && this.status == 200) {
+                                      document.getElementById("ticketStatus").innerText = this.responseText.trim();
+                                  }
+                              }
+                              xhttp.open("GET", "retrieveNumber.php?paymentAddress="+walletAddress, true);
+                              xhttp.send();
+                          
+                            }
+                          </script>
+                          <input class="form-control" placeholder="Ticket Number" type="text" id="paymentAddr" value=""/>
+                          <p class="winnings">Lose your ticket number? No problem. Enter your payout address here</p>
+                          <button class="btn btn-lg btn-primary" size="20" onclick="findTicket()">Lookup ticket by payout address</button>
 
 
-		<center>
-		<div style="border-radius:25px;border:1;width:550;background:#47d147;color:white">
-		<table>
-			<tr>
-				<td>
-					<img src="https://image.flaticon.com/icons/png/512/8/8817.png" width=100/>
-				</td>
-				<td>
-					<center>
-					<h1 style="color:white"> NEXT DRAWING: <p id="demo"></p> </h1></div>
-					</center>
-				</td>
-				<td>
-					<img src="https://image.flaticon.com/icons/png/512/8/8817.png" width=100/>
-				</td>
-			</tr>
-		</table>
-		</center>
+                          </p>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
-		<hr/>
 
-		<table cellpadding="50">
-			<tr>
-				<td>
-					<h2><strong>About:</strong></h2>
-					<p>This lotto was created to help fund advertising of Verge Currency. I don't have any affiliation with XVG. 
-					</br>
-					</br>Currently, each ticket sale will pay for the following:
-					</br>1%  - Server|Site fee
-					</br>10% - Seed the following weeks lotto pot
-					</br>20% - XVG Marketing Team
-					</br>69% - Added to this weeks lotto pot
-					</br>
-					<div class="bg-info">
-						<h4>TICKET SALES WILL BE STOPPED 2 HOURS PRIOR TO DRAWING TO ALLOW ALL TICKETS TO CLEAR</h4>
-					<div>
-					</p>
-					<p><b>Drawings will take place once a week on Sunday 5pm EST</b></p>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					
-					<div class="panel panel-default">
-					<div class="panel panel-heading">Referral Bonus!</div>
-					<div class="panel panel-body">
-					<p>For every ticket you sell with the below link, you'll get 10xvg at the drawing </p>
-					<h3 style="font-size:20" class="label label-info">https://www.xvglotto.com?referralId=YOUR PAYOUT ADDRESS HERE</h3>
-					</div>
-					</div>
-					
-				</td>
-			</tr>
-		</table>
-		<center>
-			<img src="https://media.tenor.com/images/20a7813c6c5913b7112e992e0566c809/tenor.gif" width="200"/>
-		</center>
-		<hr/>
-	</body>
+<section id="about-container" data-background-color="gray">
+    <div class="container">
+
+      <div class="row justify-content-md-center">
+        <div class="col-lg-2">
+        </div>
+
+        <div class="col-lg-8">
+
+          <div class="card" data-background-color="black">
+              <div class="card-block content-danger">
+              <h3> <i class="now-ui-icons objects_diamond"></i> Get A Referral Bonus </h3>
+            <p> For every ticket you sell with the below link, you'll get 10xvg at the drawing </p>
+            <div class="alert alert-info" role="alert">
+              https://www.xvglotto.com?referralId=YOUR PAYOUT ADDRESS HERE
+            </div>
+            </div>
+          </div>
+
+          <div class="card" data-background-color="black">
+
+          <div class="card-block content-danger">
+            <h3> <i class="now-ui-icons emoticons_satisfied"></i> About XVG Lotto </h3>
+          <p> This lotto was created to help fund advertising of Verge Currency. I don't have any affiliation with XVG. </p>
+          <p> Currently, each ticket sale will pay for the following: </p>
+          <ul>
+            <li> 1% - Server & Site fee </li>
+            <li> 10% - Seed the following weeks lotto pot </li>
+            <li> 20% - XVG Marketing Team </li>
+            <li> 69% - Added to this weeks lotto pot </li>
+          </ul>
+          <p class="text-info">
+              TICKET SALES WILL BE STOPPED 2 HOURS PRIOR TO DRAWING TO ALLOW ALL TICKETS TO CLEAR
+              Drawings will take place once a week on Sunday 5pm EST
+          </p>
+          </div>
+          </div>
+        </div>
+
+
+
+        <div class="col-lg-2">
+        </div>
+      </div>
+
+  </div>
+</section>
+
+<footer class="footer " data-background-color="black">
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="https://www.vergecurrency.com">
+                                Learn More About Verge
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="copyright">
+                     Design by
+                    <a href="https://www.twitter.com/tonigemayel" target="_blank">Toni Gemayel</a>.
+                </div>
+            </div>
+        </footer>
+
+
+
+				
+<!-- 				<div class="panel panel-default">
+				<div class="panel panel-heading">Referral Bonus!</div>
+				<div class="panel panel-body">
+				<p>For every ticket you sell with the below link, you'll get 10xvg at the drawing </p>
+				<h3 style="font-size:20" class="label label-info">https://www.xvglotto.com?referralId=YOUR PAYOUT ADDRESS HERE</h3>
+				</div>
+				</div> -->
+				
+
+
+<!--   Core JS Files   -->
+<script src="./assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
+<script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
+<script src="./assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+<!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+<script src="./assets/js/plugins/bootstrap-switch.js"></script>
+<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+<script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+<!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
+<script src="./assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
+<!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
+<script src="./assets/js/now-ui-kit.js?v=1.1.0" type="text/javascript"></script>
+</script>
+
+
 </html>
