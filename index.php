@@ -36,7 +36,7 @@
 		<script src="./js/bootstrap.min.js"></script>
 		<script>
 			// Set the date we're counting down to
-			var countDownDate = new Date("SEP 25, 2017 17:00:00 GMT-4").getTime();
+			var countDownDate = new Date("OCT 29, 2017 20:00:00 GMT-4").getTime();
 		
 			// Update the count down every 1 second
 			var x = setInterval(function() {
@@ -147,8 +147,8 @@
 		$currentStats = $currentStatsRows[0];
 		$totalSold = $currentStats["ticketsSold"];
 		$ratio="";
-		if($totalSold<1000){
-			$ratio="1:1000";
+		if($totalSold<100){
+			$ratio="1:100";
 		}
 		else{
 			$ratio = "1:".$totalSold;
@@ -216,7 +216,8 @@
                         </ol>
                         <div class="card-footer">
                           <h4><a href="#">Payout Address:</a></h4>  
-                            <form class="form-group" target="_blank"  action="https://www.coinpayments.net/index.php" method="post">
+<!--<h2>Ticket Sales Closed until after the drawing</h2>-->
+                        <form class="form-group" target="_blank"  action="https://www.coinpayments.net/index.php" method="post">
                               <input type="hidden" name="on1" value="PayoutAddress">
                               <input type="text" placeholder="Payout Address" id="poaddress" name="ov1" class="form-control" value="" required>  
                               
@@ -358,7 +359,7 @@
           </ul>
           <p class="text-info">
               TICKET SALES WILL BE STOPPED 2 HOURS PRIOR TO DRAWING TO ALLOW ALL TICKETS TO CLEAR
-              Drawings will take place once a week on Sunday 5pm EST
+              Drawings will take place once a week on Sunday 8pm EST
           </p>
           </div>
           </div>

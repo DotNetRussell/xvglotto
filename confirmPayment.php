@@ -163,11 +163,37 @@
 
 				echo $ticketNumber;
 				$result->close();
-
 			}
+
 		}
 
+		$query = "SELECT * FROM potinfo";
+		if($result = $mysqli->query($query)){
+			$potInfoRow = $result->fetch_all(MYSQLI_ASSOC);
+			$ticketsSold = $potInfoRow[0]["ticketsSold"];
+			$ticketPrice = $potInfoRow[0]["ticketPrice"];
+			$ticketSeed = $potInfoRow[0]["seedAmount"];
 
+			$potAmount = (($ticketsSold * $ticketPrice)*.69)+$ticketSeed;
+			$marketing = (($ticketsSold * $ticketPrice)*.2);
+
+			$url = "https://discordapp.com/api/webhooks/361631366389039117/OX8wRtxFtgPShskTWx1SEArMGajP0XhlcO7V8oYyStvjsxtgXQAGjoIjeWvjvJbXsi2H";
+			$message = "Ticket Purchased!\r\nTotal Tickets Sold: ".$ticketsSold."\r\nTicket Price: ".$ticketPrice."\r\n\r\nCurrent Pot: ".$potAmount."\r\nRaised For Marketing: ".$marketing."\r\nGet your tickets at https://www.XvgLotto.com";
+
+			$data = array('content' => $message);
+			$json = json_encode($data);
+			
+
+			$curl = curl_init($url);
+			curl_setopt($curl, CURLOPT_HEADER, false);
+			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-type: application/json"));
+			curl_setopt($curl, CURLOPT_POST, true);
+			curl_setopt($curl, CURLOPT_POSTFIELDS, $json);
+
+			curl_exec($curl);
+
+		}
 	}
 	//Don't let the get a lotto ticket
 	else if($statusCode === 0){
