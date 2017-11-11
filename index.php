@@ -17,7 +17,7 @@
     <!-- Twitter Open Graph -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@xvglotto" />
-    <meta name="twitter:creator" content="@dotnetrussell" />
+    <meta name="twitter:creator" content="@llplastikmanll" />
     <meta property="og:url" content="https://xvglotto.com" />
     <meta property="og:title" content="XVG Lotto" />
     <meta property="og:description" content="Buy a lotto ticket, win XVG, and support Verge Currency" />
@@ -35,8 +35,13 @@
 		<script src="./assets/js/respond.min.js"></script>
 		<script src="./js/bootstrap.min.js"></script>
 		<script>
+			<?php
+				$configFile = file_get_contents("/var/prison/config.json");
+				$configJson = json_decode($configFile,true);
+				echo 'var lottoDate = "'.$configJson["lottoConfig"]["lottoDate"].'";';
+			?>
 			// Set the date we're counting down to
-			var countDownDate = new Date("OCT 29, 2017 20:00:00 GMT-4").getTime();
+			var countDownDate = new Date(lottoDate).getTime();
 		
 			// Update the count down every 1 second
 			var x = setInterval(function() {
@@ -93,7 +98,7 @@
                   </a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="https://twitter.com/DotNetRussell">
+                  <a class="nav-link" href="https://twitter.com/llplastikmanll">
                       <i class="fa fa-twitter"></i>
                       <p>Tweet Me</p>
                   </a>
@@ -128,8 +133,8 @@
             </br>  
           </div>
           <h5 class="category category-absolute">Hosted and operated by
-            <a href="https://twitter.com/DotNetRussell" target="_blank">
-                @DotNetRussell
+            <a href="https://twitter.com/llplastikmanll" target="_blank">
+                @llplastikmanll
             </a> for 
             <a href="https://www.vergecurrency.com" target="_blank">
                 <img src="./assets/img/verge-logo.png" class="verge-logo"> 
@@ -216,8 +221,8 @@
                         </ol>
                         <div class="card-footer">
                           <h4><a href="#">Payout Address:</a></h4>  
-<!--<h2>Ticket Sales Closed until after the drawing</h2>-->
-                        <form class="form-group" target="_blank"  action="https://www.coinpayments.net/index.php" method="post">
+<h2>Ticket Sales Closed until after the server migration is completed</h2>
+                       <!-- <form class="form-group" target="_blank"  action="https://www.coinpayments.net/index.php" method="post">
                               <input type="hidden" name="on1" value="PayoutAddress">
                               <input type="text" placeholder="Payout Address" id="poaddress" name="ov1" class="form-control" value="" required>  
                               
@@ -247,7 +252,7 @@
                                 <p class="text-warning last">
                                   PLEASE ALLOW UP TO 10-30 MIN FOR THE PAYMENT TO PROCESS.</br>DO NOT FORGET TO COVER TRANSACTION FEES
                                  </p>
-                            </form>
+                            </form>-->
                         </div>
                     </div>
                 </div>
@@ -285,7 +290,7 @@
                           <button class="btn btn-lg btn-success" size="20" onclick="getTicket()">Get Ticket Number</button>
                           </br><p class="text-warning">Coinpayments can be slow. Even after it says payment complete on your end it may take 5-10 more min.</br>
 
-                          <p>Please reach out to me on <a class="twitter" href="https://twitter.com/DotNetRussell" target="_blank">Twitter</a> if after 1 hr your payment hasn't posted</p>
+                          <p>Please reach out to me on <a class="twitter" href="https://twitter.com/llplastikmanll" target="_blank">Twitter</a> if after 1 hr your payment hasn't posted</p>
                           </br></br>
 
                           <div class="card-footer">
