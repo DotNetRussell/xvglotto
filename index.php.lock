@@ -220,9 +220,9 @@
                           <li><p>The drawing will take place in the <a href="https://discordapp.com/channels/325024453065179137/325024453065179137">vergecurrency discord channel</a></p></li>
                         </ol>
                         <div class="card-footer">
-                          <h4><a href="#">Payout Address:</a></h4>
-<!--<h2>Ticket Sales Closed until after the drawing is completed</h2>-->
-                        <form class="form-group" target="_blank"  action="https://www.coinpayments.net/index.php" method="post">
+                          <h4><a href="#">Payout Address:</a></h4>  
+<h2>Ticket Sales Closed until after the drawing is completed</h2>
+                        <!--<form class="form-group" target="_blank"  action="https://www.coinpayments.net/index.php" method="post">
                               <input type="hidden" name="on1" value="PayoutAddress">
                               <input type="text" placeholder="Payout Address" id="poaddress" name="ov1" class="form-control" value="" required>  
                               
@@ -252,7 +252,7 @@
                                 <p class="text-warning last">
                                   PLEASE ALLOW UP TO 10-30 MIN FOR THE PAYMENT TO PROCESS.</br>DO NOT FORGET TO COVER TRANSACTION FEES
                                  </p>
-                            </form>
+                            </form>-->
                         </div>
                     </div>
                 </div>
