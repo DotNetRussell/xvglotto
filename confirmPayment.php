@@ -177,7 +177,7 @@
 			$potAmount = (($ticketsSold * $ticketPrice)*.69)+$ticketSeed;
 			$marketing = (($ticketsSold * $ticketPrice)*.2);
 
-			$url = "https://discordapp.com/api/webhooks/361631366389039117/OX8wRtxFtgPShskTWx1SEArMGajP0XhlcO7V8oYyStvjsxtgXQAGjoIjeWvjvJbXsi2H";
+			$url = $configJson["webhooks"]["discordUrl"]; 
 			$message = "Ticket Purchased!\r\nTotal Tickets Sold: ".$ticketsSold."\r\nTicket Price: ".$ticketPrice."\r\n\r\nCurrent Pot: ".$potAmount."\r\nRaised For Marketing: ".$marketing."\r\nGet your tickets at https://www.XvgLotto.com";
 
 			$data = array('content' => $message);
