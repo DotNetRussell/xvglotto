@@ -1,0 +1,18 @@
+Hey thanks again for taking over the lotto. Here's some quick notes for you to run it successfully. 
+
+RESETTING THE LOTTO
+In /home/pi/ there is a script called ResetLotto.sh
+run `./ResetLotto.sh` and enter your db password (when I wrote this, there was no password)
+
+
+UPDATING THE POT INFORMATION
+In /home/pi there is a script called UpdatePotInfo.sh
+run `./UpdatePotInfo.sh` and read what it tells you to enter
+
+You're going to need to give it tickets sold, ticket price and seed amount
+
+
+CHANGING THE LOTTO DRAWING DATE
+In /var/prison there is a json file called config.json You're going to change the value for lottoDate. Save it and that's it!
+
+
